@@ -27,7 +27,7 @@
 #import "YLProgressBar.h"
 
 // Sizes
-const NSInteger YLProgressBarSizeInset    = 1; //px
+const NSInteger YLProgressBarSizeInset    = 0; //px
 const NSInteger YLProgressBarStripesDelta = 8; //px
 
 // Animation times
@@ -138,10 +138,12 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
         innerRect = CGRectMake(0, 0, CGRectGetWidth(rect) * self.progress, CGRectGetHeight(rect));
     }
     
-    if (self.progress == 0 && _behavior == YLProgressBarBehaviorIndeterminate)
+    if (_behavior == YLProgressBarBehaviorIndeterminate)
     {
         [self drawStripes:context withRect:rect];
-    } else if (self.progress > 0)
+    }
+    
+    if (self.progress > 0)
     {
         [self drawProgressBar:context withRect:innerRect];
         
@@ -361,7 +363,7 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
     
     CGContextSaveGState(context);
     {
-        CGFloat trackHeight = (_type == YLProgressBarTypeRounded) ? CGRectGetHeight(rect) - 1 : CGRectGetHeight(rect);
+        CGFloat trackHeight = CGRectGetHeight(rect);
         
         // Draw the track
         [self.trackTintColor set];
