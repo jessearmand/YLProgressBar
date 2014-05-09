@@ -167,6 +167,14 @@ typedef NS_ENUM (NSUInteger, YLProgressBarIndicatorTextDisplayMode)
 /** @name Configuring the Progress Bar */
 
 /**
+ * @abstract The gradient effect on the progress bar
+ * @discussion If YES, the progress bar color has a gradient
+ * The default value for this property is NO.
+ */
+
+@property (nonatomic, assign) BOOL hasGradient; //UI_APPEARANCE_SELECTOR;
+
+/** 
  * @abstract The gloss effect on the progress bar
  * @discussion If YES, the progress tint color has a gloss effect.
  * The default value for this property is NO.

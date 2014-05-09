@@ -198,10 +198,16 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
     progressTintColor  = (progressTintColor) ? progressTintColor : [UIColor blueColor];
     
     const CGFloat *c    = CGColorGetComponents(progressTintColor.CGColor);
-    UIColor *leftColor  = [UIColor colorWithRed:(c[0] / 2.0f) green:(c[1] / 2.0f) blue:(c[2] / 2.0f) alpha:(c[3])];
+
+    UIColor *leftColor  = progressTintColor;
     UIColor *rightColor = progressTintColor;
-    NSArray *colors     = @[leftColor, rightColor];
     
+    if (self.hasGradient) {
+        leftColor  = [UIColor colorWithRed:(c[0] / 2.0f) green:(c[1] / 2.0f) blue:(c[2] / 2.0f) alpha:(c[3])];
+        rightColor = progressTintColor;
+    }
+    
+    NSArray *colors     = @[leftColor, rightColor];
     [self setProgressTintColors:colors];
 }
 
