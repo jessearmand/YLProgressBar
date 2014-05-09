@@ -182,6 +182,15 @@ typedef NS_ENUM (NSUInteger, YLProgressBarIndicatorTextDisplayMode)
 
 @property (nonatomic, assign) BOOL glossy; //UI_APPEARANCE_SELECTOR;
 
+/**
+ * @abstract The corner radius of the progress bar
+ * @discussion The default value for this property is 2.0 for YLProgressBarTypeRounded.
+ * It's 0 for YLProgressBarTypeFlat.
+ */
+
+@property (nonatomic, assign) CGFloat cornerRadius; //UI_APPEARANCE_SELECTOR;
+
+/**
  * @abstract The animated vs. nonanimated stripes of the progress
  * bar.
  * @discussion If YES, the stripes over the progress bar is moving

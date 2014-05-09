@@ -36,7 +36,6 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
 
 @interface YLProgressBar ()
 @property (nonatomic, assign) double      stripesOffset;
-@property (nonatomic, assign) CGFloat     cornerRadius;
 @property (nonatomic, strong) NSTimer     *stripesTimer;
 @property (nonatomic, strong) NSArray     *colors;
 @property (nonatomic, strong) NSTimer     *progressTargetTimer;
@@ -110,7 +109,9 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     // Refresh the corner radius value
-    self.cornerRadius   = (_type == YLProgressBarTypeRounded) ? rect.size.height / 2 : 0;
+    CGFloat defaultCornerRadius = rect.size.height / 2;
+    CGFloat cornerRadius = (_cornerRadius != defaultCornerRadius && _cornerRadius > 0) ? _cornerRadius : defaultCornerRadius;
+    self.cornerRadius = (_type == YLProgressBarTypeRounded) ? cornerRadius : 0;
     
     // Compute the progressOffset for the stripe's animation
     self.stripesOffset = (!_stripesAnimated || self.stripesOffset > 2 * _stripesWidth - 1) ? 0 : ++self.stripesOffset;
