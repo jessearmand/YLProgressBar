@@ -158,7 +158,7 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
             }
         }
         
-        if (_type == YLProgressBarTypeRounded)
+        if (_type == YLProgressBarTypeRounded && self.glossy)
         {
             [self drawGloss:context withRect:innerRect];
         }
@@ -361,7 +361,7 @@ const NSTimeInterval YLProgressBarProgressTime         = 0.25f;        // s
         UIBezierPath* roundedRect   = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CGRectGetWidth(rect), trackHeight) cornerRadius:_cornerRadius];
         [roundedRect fill];
         
-        if (_type == YLProgressBarTypeRounded)
+        if (_type == YLProgressBarTypeRounded && self.glossy)
         {
             // Draw the white shadow
             [[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.2] set];
